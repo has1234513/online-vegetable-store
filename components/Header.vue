@@ -10,7 +10,7 @@
         VegetableBL
       </router-link>
       <div v-if="!isLoginPage" class="flex items-center space-x-4">
-        <!-- Add navigation items here if needed -->
+        <Navigation />
       </div>
     </nav>
     <hr v-if="isLoginPage" class="border-b border-tblack-100" />
@@ -18,8 +18,9 @@
 </template>
 
 <script setup>
+import Navigation from './Header/Navigation.vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
-const isLoginPage = computed(() => route.path === '/login');
+const isLoginPage = computed(() => route.path === '/');
 </script>

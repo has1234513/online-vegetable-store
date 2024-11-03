@@ -2,7 +2,7 @@
   <div class="px-4 py-6 max-w-[1440px] mx-auto">
     <!-- Title and Sorting Section -->
     <div
-      class="flex md:flex-row md: flex-col items-center justify-between mb-8"
+      class="flex md:flex-row md: flex-col items-center justify-between mb-4"
     >
       <div class="flex flex-row items-baseline gap-2">
         <h1 class="font-normal text-[64px] leading-[76.8px] font-newsreader">
@@ -30,10 +30,11 @@
         </button>
       </div>
     </div>
+    <hr class="mb-8 mr-12"/>
 
     <!-- Products Grid - Fixed 3 columns -->
     <div
-      class="flex items-center space-y-10 md:space-y-0 flex-col md:grid xl:grid-cols-3 md:grid-cols-2 md:gap-6 mx-auto"
+      class="flex items-center space-y-10 md:space-y-0 flex-col md:grid xl:grid-cols-3 md:grid-cols-2 md:gap-8 mx-auto"
     >
       <div
         v-for="product in store.sortedProducts"

@@ -1,6 +1,7 @@
 <template>
   <div class="">
     <Header />
+    <MyProfile/>
     <NuxtPage />
   </div>
 </template>
