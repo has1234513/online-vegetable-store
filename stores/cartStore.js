@@ -13,21 +13,21 @@ export const useCartStore = defineStore('basket', {
 
   actions: {
     addPoundsToProduct(id, pounds) {
-      const item = this.basket.find(p => p.id === id);
+      const item = this.basket.find((p) => p.id === id);
       if (item) {
         item.pounds += pounds;
       }
     },
 
     removeFromBasket(id) {
-      this.basket = this.basket.filter(obj => obj.id !== id);
+      this.basket = this.basket.filter((obj) => obj.id !== id);
     },
 
     addToBasket(id) {
-        console.log("adding to basket")
+      console.log('adding to basket');
       this.basket.push({
         id: id,
-        pounds: 1
+        pounds: 1,
       });
     },
   },

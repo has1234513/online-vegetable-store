@@ -30,11 +30,11 @@
         </button>
       </div>
     </div>
-    <hr class="mb-8"/>
+    <hr class="mb-8" />
 
     <!-- Products Grid - Fixed 3 columns -->
     <div
-      class="flex items-center space-y-10 md:space-y-0 flex-col md:grid xl:grid-cols-3 md:grid-cols-2 md:gap-8 mx-auto "
+      class="flex items-center space-y-10 md:space-y-0 flex-col md:grid xl:grid-cols-3 md:grid-cols-2 md:gap-8 mx-auto"
     >
       <div
         v-for="product in store.sortedProducts"
@@ -115,7 +115,6 @@ const addToBasket = (product) => {
 const removeFromBasket = (id) => {
   cartStore.removeFromBasket(id);
 };
-
 </script>
 
 <style scoped>

@@ -179,7 +179,7 @@ const handleSubmit = async () => {
         password: password.value,
         rememberMe: rememberMe.value,
       }),
-    });    
+    });
 
     // const tagmarshallResponse = await fetch(
     //   'https://host.tagmarshal.golf/api/login',

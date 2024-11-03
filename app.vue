@@ -1,13 +1,16 @@
 <template>
   <div class="">
     <Header />
-    <MyProfile v-if="route.path !== '/login' && 2 === 3" :isOpen="true" />
+    <MyProfile v-if="route.path !== '/login' && user.showModal" />
     <NuxtPage />
   </div>
 </template>
 
 <script setup>
 import { useRouter, useRoute } from 'vue-router';
+import { useUserStore } from '@/stores/userStore';
+
+const user = useUserStore();
 
 const router = useRouter();
 const route = useRoute();

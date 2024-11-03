@@ -5,7 +5,3 @@
 .t-paragraph {
   @apply text-[20px] font-normal leading-[32px];
 }
-
-.basket {
-  @apply font-inter leading-[20.8px] font-semibold text-[16px]
-}
