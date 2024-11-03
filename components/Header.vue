@@ -1,7 +1,7 @@
 <template>
   <header class="bg-twhite-100">
     <nav
-      class="max-w-[1440px] h-[112px] px-4 mx-auto flex justify-between items-center"
+      class="max-w-[1440px] h-[112px] px-10 mx-auto flex justify-between items-center"
     >
       <router-link
         to="/"

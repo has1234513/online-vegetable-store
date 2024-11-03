@@ -1,5 +1,5 @@
 <template>
-  <div class="px-4 py-6 max-w-[1440px] mx-auto">
+  <div class="px-10 py-6 max-w-[1440px] mx-auto">
     <!-- Title and Sorting Section -->
     <div
       class="flex md:flex-row md: flex-col items-center justify-between mb-4"
@@ -30,16 +30,16 @@
         </button>
       </div>
     </div>
-    <hr class="mb-8 mr-12"/>
+    <hr class="mb-8"/>
 
     <!-- Products Grid - Fixed 3 columns -->
     <div
-      class="flex items-center space-y-10 md:space-y-0 flex-col md:grid xl:grid-cols-3 md:grid-cols-2 md:gap-8 mx-auto"
+      class="flex items-center space-y-10 md:space-y-0 flex-col md:grid xl:grid-cols-3 md:grid-cols-2 md:gap-8 mx-auto "
     >
       <div
         v-for="product in store.sortedProducts"
         :key="product.id"
-        class="bg-tgrey-50 border-[2px] border-tgrey-60 rounded-lg max-w-[395px]"
+        class="bg-tgrey-50 border-[2px] border-tgrey-60 rounded-lg max-w-[500px]"
       >
         <!-- Product Image -->
         <div class="mb-4 overflow-hidden bg-twhite-100">
