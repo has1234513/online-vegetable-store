@@ -1,3 +1,7 @@
 .t-normal-text {
   @apply text-[16px] font-medium leading-[20.8px];
 }
+
+.t-paragraph {
+  @apply text-[20px] font-normal leading-[32px];
+}

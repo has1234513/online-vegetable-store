@@ -1,9 +1,7 @@
 <template>
   <main class="h-[calc(100vh-120px)] bg-twhite flex font-inter px-[20px]">
     <div class="w-[553px] m-auto">
-      <div
-        class="bg-tgreen-100 rounded-[16px] p-6 shadow-md"
-      >
+      <div class="bg-tgreen-100 rounded-[16px] p-6 shadow-md">
         <h2 class="text-[20px] font-semibold text-twhite-100 mb-6">Sign In</h2>
 
         <form @submit.prevent="handleSubmit" class="space-y-3">
@@ -50,6 +48,10 @@
             >
           </div>
 
+          <div class="text-red-400 text-[16px] font-semibold">
+            <span> Error logging in </span>
+          </div>
+
           <button
             type="submit"
             class="w-[128px] ml-auto flex justify-center items-center py-3 px-4 border border-transparent rounded-md shadow-sm text-[16px] font-semibold text-tgreen-100 bg-twhite-100 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-tgreen-50"
@@ -81,13 +83,13 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useRuntimeConfig } from '#app';
 
+const router = useRouter();
 const config = useRuntimeConfig();
 
 const username = ref('');
 const password = ref('');
-const name = ref('');
 const rememberMe = ref(false);
-const loginSuccess = ref(false);
+const loginError = ref(false);
 
 // Cookie utility functions
 const setCookie = (name, value, days) => {
@@ -158,15 +160,6 @@ const handleRememberMeChange = () => {
 
 const handleSubmit = async () => {
   try {
-    if (rememberMe.value) {
-      setCookie('rememberedUsername', encrypt(username.value), 30);
-      setCookie('rememberedPassword', encrypt(password.value), 30);
-      setCookie('rememberMe', 'true', 30);
-    } else {
-      clearStoredCredentials();
-    }
-
-    // Call the backend API to save the login data
     const response = await fetch(config.public.apiLoginEndpoint, {
       method: 'POST',
       headers: {
@@ -179,14 +172,37 @@ const handleSubmit = async () => {
       }),
     });
 
+    // const tagmarshallResponse = await fetch("https://host.tagmarshal.golf/api/login", {
+    //     method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     username: username.value,
+    //     password: password.value
+    //   }),
+    // })
+
+    // console.logg("tagmarshall", tagmarshallResponse)
+
     const result = await response.json();
     if (result.success) {
-      loginSuccess.value = true;
+      router.push('/home');
       console.log('Login successful');
+      setCookie('loggedIn', 'true', 30);
+
+      if (rememberMe.value) {
+        setCookie('rememberedUsername', encrypt(username.value), 30);
+        setCookie('rememberedPassword', encrypt(password.value), 30);
+        setCookie('rememberMe', 'true', 30);
+      } else {
+        clearStoredCredentials();
+      }
     } else {
       console.error('Login failed:', result.message);
     }
   } catch (error) {
+    loginError.value = true;
     console.error('Error during login:', error);
   }
 };
