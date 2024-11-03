@@ -49,7 +49,7 @@ const deleteCookie = (name) => {
 
 const logout = () => {
   deleteCookie('loggedIn');
-  router.push('/')
-  user.toggleModal(false)
+  router.push('/');
+  user.toggleModal(false);
 };
 </script>

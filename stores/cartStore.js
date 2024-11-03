@@ -15,7 +15,7 @@ export const useCartStore = defineStore('basket', {
     addPoundsToProduct(id, pounds) {
       const item = this.basket.find((p) => p.id === id);
       if (item) {
-        item.pounds += pounds;
+        item.pounds = pounds;
       }
     },
 
