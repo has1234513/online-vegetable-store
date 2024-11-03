@@ -4,7 +4,7 @@
       class="max-w-[1440px] h-[112px] px-10 mx-auto flex justify-between items-center"
     >
       <router-link
-        to="/home"
+        :to="route.path === '/' ? '/' : '/home'"
         class="text-[32px] leading-[32px] font-medium font-newsreader text-tgreen-100"
       >
         VegetableBL
