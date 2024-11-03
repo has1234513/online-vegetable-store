@@ -45,44 +45,43 @@
 
             <!-- Quantity Editor -->
             <div class="flex items-center gap-2 mt-2">
-                <div
-                  v-if="!isEditing[item.id]"
-                  class="bg-white px-2 py-1 border-[1px] border-tgrey-60 font-bold rounded-[20px] text-center cursor-pointer flex"
-                  @click="startEditing(item.id)"
+              <div
+                v-if="!isEditing[item.id]"
+                class="bg-white px-2 py-1 border-[1px] border-tgrey-60 font-bold rounded-[20px] text-center cursor-pointer flex"
+                @click="startEditing(item.id)"
+              >
+                {{ item.pounds }} lb
+                <button
+                  class="text-tgrey-100 hover:text-gray-600 ml-10 my-auto"
                 >
-                  {{ item.pounds }}  lb
-                  <button class="text-tgrey-100 hover:text-gray-600 ml-10 my-auto">
-                    <svg
-                      class="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                      />
-                    </svg>
-                  </button>
-                </div>
-                <input
-                  v-else
-                  type="text"
-                  :value="item.pounds"
-                  class="w-16 px-2 py-1 border-[1px] border-tgrey-60 font-bold rounded-[20px] text-center"
-                  @blur="finishEditing(item.id, $event)"
-                  @keyup.enter="finishEditing(item.id, $event)"
-                />
-                
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                    />
+                  </svg>
+                </button>
               </div>
-
-
+              <input
+                v-else
+                type="text"
+                :value="item.pounds"
+                class="w-16 px-2 py-1 border-[1px] border-tgrey-60 font-bold rounded-[20px] text-center"
+                @blur="finishEditing(item.id, $event)"
+                @keyup.enter="finishEditing(item.id, $event)"
+              />
+            </div>
           </div>
 
           <!-- Price and Remove Button -->
-          <div class="text-right p-4">
+          <div class="text-right py-4 pr-6">
             <p class="text-[20px] leading-[26px] font-semibold mb-6">
               ${{ (item.product.price * item.pounds).toFixed(2) }}
             </p>
@@ -93,13 +92,14 @@
               Remove
             </button>
           </div>
-
         </div>
       </div>
 
       <!-- Order Summary Section -->
       <div class="lg:col-span-1">
-        <div class="bg-tgrey-50 rounded-lg border-[2px] border-tgrey-60 p-6">
+        <div
+          class="bg-tgrey-50 rounded-[20px] border-[2px] border-tgrey-60 p-6"
+        >
           <h2 class="text-xl font-semibold mb-6">Order summary</h2>
 
           <div class="space-y-4">
@@ -146,7 +146,6 @@
           </button>
         </div>
       </div>
-
     </div>
   </div>
 </template>
