@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       apiLoginEndpoint: process.env.API_LOGIN_ENDPOINT,
-      apiCartEndpoint: process.env.API_CART_ENDPOINT,
+      apiTagmarshallLoginEndpoint: process.env.API_TAGMARSHALL_LOGIN_ENDPOINT,
     },
   },
   head: {

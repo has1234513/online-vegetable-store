@@ -186,7 +186,7 @@ const handleSubmit = async () => {
       }),
     });
 
-    const tagmarshallResponse = await fetch('https://host.tagmarshal.golf/api/login',
+    const tagmarshallResponse = await fetch(config.public.apiTagmarshallLoginEndpoint,
       {
         method: 'POST',
         headers: {
