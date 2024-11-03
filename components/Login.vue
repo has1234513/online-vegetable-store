@@ -48,8 +48,13 @@
             >
           </div>
 
-          <div v-if="loginError" class="text-red-400 text-[20px] font-semibold">
-            <span> Error logging in </span>
+          <div v-if="loginError !== ''" class="text-red-400 text-[16px] font-semibold">
+            <span> Error logging in on tagmarshall api, go to <NuxtLink
+              to="/home"
+              class="text-blue-300 "
+            >
+              home page
+            </NuxtLink> either way </span>
           </div>
 
           <button
@@ -95,7 +100,7 @@ const config = useRuntimeConfig();
 const username = ref('');
 const password = ref('');
 const rememberMe = ref(false);
-const loginError = ref(false);
+const loginError = ref('');
 const loading = ref(false);
 
 // Cookie utility functions
@@ -181,26 +186,24 @@ const handleSubmit = async () => {
       }),
     });
 
-    // const tagmarshallResponse = await fetch(
-    //   'https://host.tagmarshal.golf/api/login',
-    //   {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({
-    //       username: username.value,
-    //       password: password.value,
-    //     }),
-    //   }
-    // );
+    const tagmarshallResponse = await fetch('https://host.tagmarshal.golf/api/login',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: username.value,
+          password: password.value,
+        }),
+      }
+    );
 
-    // console.logg('tagmarshall', tagmarshallResponse);
+    console.logg('tagmarshall', tagmarshallResponse);
 
     const result = await response.json();
     if (result.success) {
       router.push('/home');
-      console.log('Login successful');
       setCookie('loggedIn', 'true', 30);
 
       if (rememberMe.value) {
@@ -221,4 +224,5 @@ const handleSubmit = async () => {
     console.error('Error during login:', error);
   }
 };
+
 </script>

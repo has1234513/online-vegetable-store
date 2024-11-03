@@ -1,5 +1,3 @@
-// server/api/login.js
-
 import { defineEventHandler, readBody } from 'h3';
 import jwt from 'jsonwebtoken';
 import fs from 'fs';
