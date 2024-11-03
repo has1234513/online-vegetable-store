@@ -66,14 +66,14 @@
 
             <button
               v-if="isInBasket(product.id)"
-              @click="store.removeFromBasket(product.id)"
+              @click="removeFromBasket(product.id)"
               class="py-2 px-4 bg-red-600 text-white rounded-md hover:bg-red-300 transition-colors"
             >
               Remove
             </button>
             <button
               v-else
-              @click="store.addToBasket(product.id)"
+              @click="addToBasket(product.id)"
               class="py-2 px-4 bg-tgreen-100 text-white rounded-md hover:bg-tgreen-50 transition-colors"
             >
               Add to Basket
@@ -91,10 +91,10 @@
 
 <script setup>
 import { useProductStore } from '@/stores/productStore';
-import { storeToRefs } from 'pinia';
+import { useCartStore } from '@/stores/cartStore';
 
 const store = useProductStore();
-const { filters } = storeToRefs(store);
+const cartStore = useCartStore();
 
 const formatDate = (date) => {
   return new Intl.DateTimeFormat('en-US', {
@@ -105,8 +105,17 @@ const formatDate = (date) => {
 };
 
 const isInBasket = (productId) => {
-  return store.basket?.includes(productId) || false;
+  return cartStore.basket?.some((item) => item.id === productId);
 };
+
+const addToBasket = (product) => {
+  cartStore.addToBasket(product);
+};
+
+const removeFromBasket = (id) => {
+  cartStore.removeFromBasket(id);
+};
+
 </script>
 
 <style scoped>

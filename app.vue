@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <Header />
-    <MyProfile/>
+    <MyProfile v-if="route.path !== '/login' && 2 === 3" :isOpen="true" />
     <NuxtPage />
   </div>
 </template>

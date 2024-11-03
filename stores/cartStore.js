@@ -1,32 +1,34 @@
-// stores/productStore.js
 import { defineStore } from 'pinia';
 
-export const useProductStore = defineStore('products', {
+export const useCartStore = defineStore('basket', {
   state: () => ({
-    basket: [
-      
-    ],
+    basket: [],
   }),
 
   getters: {
+    isInBasket: (state) => (id) => {
+      return state.basket.some((product) => product.id === id);
+    },
   },
 
   actions: {
- 
     addPoundsToProduct(id, pounds) {
-        const item =  state.basket.find(p => p.id === id)
-        item.pounds = (item.pounds + pounds)
+      const item = this.basket.find(p => p.id === id);
+      if (item) {
+        item.pounds += pounds;
+      }
     },
 
     removeFromBasket(id) {
-        state.basket.filter(obj => obj.id !== id);
+      this.basket = this.basket.filter(obj => obj.id !== id);
     },
 
-    addToBasket(product) {
-        state.basket.push({
-            id: product.id,
-            pounds: 1
-        })
+    addToBasket(id) {
+        console.log("adding to basket")
+      this.basket.push({
+        id: id,
+        pounds: 1
+      });
     },
   },
 });

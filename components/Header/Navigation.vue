@@ -1,10 +1,7 @@
-<!-- components/TheHeader.vue -->
 <template>
   <header class="py-4 px-6 ">
     <nav class="flex items-center justify-between">
-      <!-- Logo -->
-      
-
+  
       <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center gap-8">
         <div class="flex items-center gap-4">
@@ -102,17 +99,15 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch } from 'vue'
-import { useProductStore } from '@/stores/productStore'
-import { useRoute } from 'vue-router'
+import { ref, computed } from 'vue'
+import { useCartStore } from '@/stores/cartStore';
+const cartStore = useCartStore();
 
-const route = useRoute()
-const store = useProductStore()
 const isMenuOpen = ref(false)
 
 const userName = 'Alfred Mugaeg'
 
-const basketCount = computed(() => store.basket?.length || 0)
+const basketCount = computed(() => cartStore.basket?.length || 0)
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
