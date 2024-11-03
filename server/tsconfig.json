@@ -1,3 +1,10 @@
 {
-  "extends": "../.nuxt/tsconfig.server.json"
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false,
+    "noEmit": true,
+    "module": "ESNext",
+    "target": "ESNext"
+  },
+  "include": ["./**/*.js"]
 }

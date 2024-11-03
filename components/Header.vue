@@ -1,7 +1,7 @@
 <template>
   <header class="bg-twhite-100">
     <nav
-      class="max-w-7xl h-[112px] px-4 mx-auto flex justify-between items-center"
+      class="max-w-[1440px] h-[112px] px-4 mx-auto flex justify-between items-center"
     >
       <router-link
         to="/"
@@ -9,7 +9,7 @@
       >
         VegetableBL
       </router-link>
-      <div class="flex items-center space-x-4">
+      <div v-if="!isLoginPage" class="flex items-center space-x-4">
         <!-- Add navigation items here if needed -->
       </div>
     </nav>

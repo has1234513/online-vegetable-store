@@ -1,5 +1,5 @@
 <template>
-  <section class=" mx-auto py-12 font-inter">
+  <section class="mx-auto py-12 font-inter">
     <!-- Hero Text -->
     <div class="text-center mb-12 mt-[100px]">
       <h1
@@ -13,12 +13,14 @@
       <button
         class="bg-tgreen-100 text-twhite-100 mt-[30px] px-6 py-3 font-semibold rounded-md hover:bg-tgreen-50 transition-colors t-normal-text"
       >
-        Browse our shop
+        <NuxtLink to="/products"> Browse our shop </NuxtLink>
       </button>
     </div>
 
     <!-- Image Grid -->
-    <div class="flex lg:flex-row flex-col gap-8 mb-12 mt-[100px] w-full lg:px-0 px-6">
+    <div
+      class="flex lg:flex-row flex-col gap-8 mb-12 mt-[100px] w-full lg:px-0 px-6"
+    >
       <div class="lg:mr-10 mx-auto">
         <img
           src="@/assets/images/spinach.png"
@@ -26,12 +28,12 @@
           class="md:w-[504px] max-w-full md:h-[693px]"
         />
       </div>
-      <div class="flex items-center lg:ml-auto  mx-auto lg:mr-0 ">
+      <div class="flex items-center lg:ml-auto mx-auto lg:mr-0">
         <div>
           <img
             src="@/assets/images/mixedvegetables.png"
             alt="Root vegetables and produce"
-            class="max-w-full max-h-[480px] "
+            class="max-w-full max-h-[480px]"
           />
           <p class="text-sm mt-2">
             <span class="font-semibold">Central California —</span>
@@ -42,11 +44,12 @@
       </div>
     </div>
 
-    <div class="flex lg:flex-row flex-col lg:space-x-[80px] t-paragraph mt-[10rem] max-w-[1440px] lg:mx-auto mx-5">
-      
-        <h2 class="font-semibold uppercase tracking-wider text-sm mb-4 mx-auto">
-          What we believe
-        </h2>
+    <div
+      class="flex lg:flex-row flex-col lg:space-x-[80px] t-paragraph mt-[10rem] max-w-[1440px] lg:mx-auto mx-5"
+    >
+      <h2 class="font-semibold uppercase tracking-wider text-sm mb-4 mx-auto">
+        What we believe
+      </h2>
 
       <div class="max-w-[822px]">
         <p>We believe in produce. Tasty produce. Produce like:</p>

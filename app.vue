@@ -6,9 +6,10 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 
 const router = useRouter();
+const route = useRoute();
 
 const getCookie = (name) => {
   const nameEQ = name + '=';
@@ -28,7 +29,9 @@ onMounted(() => {
     const loggedIn = getCookie('loggedIn');
 
     if (loggedIn && loggedIn === 'true') {
-      router.push('/home');
+      if (route.path === '/login') {
+        router.push('/home');
+      }
     } else {
       router.push('/');
     }

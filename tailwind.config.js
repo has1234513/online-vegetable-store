@@ -15,10 +15,11 @@ export default {
       colors: {
         'tgreen-50': '#83af5e',
         'tgreen-100': '#426B1F',
-        'twhite-50': '#FFFFFF',
         'twhite-100': '#FFFFFF',
-        'tblack-50': '#000000',
         'tblack-100': '#000000',
+        'tgrey-50': '##FAFAF5',
+        'tgrey-60': '#E6E6E6',
+        'tgrey-100': '#6D6D6D'
       },
     },
   },
