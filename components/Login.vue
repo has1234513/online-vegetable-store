@@ -1,7 +1,9 @@
 <template>
   <main class="h-[calc(100vh-120px)] bg-twhite flex font-inter px-[20px]">
     <div class="w-[553px] m-auto">
-      <div class="bg-tgreen-100 rounded-[16px] p-6 shadow-md">
+      <div
+        class="bg-tgreen-100 rounded-[16px] p-6 shadow-md"
+      >
         <h2 class="text-[20px] font-semibold text-twhite-100 mb-6">Sign In</h2>
 
         <form @submit.prevent="handleSubmit" class="space-y-3">
@@ -76,10 +78,16 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { useRuntimeConfig } from '#app';
+
+const config = useRuntimeConfig();
 
 const username = ref('');
 const password = ref('');
+const name = ref('');
 const rememberMe = ref(false);
+const loginSuccess = ref(false);
 
 // Cookie utility functions
 const setCookie = (name, value, days) => {
@@ -107,7 +115,6 @@ const deleteCookie = (name) => {
   document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; samesite=strict`;
 };
 
-// Simple encryption/decryption functions
 const encrypt = (text) => {
   return btoa(text).split('').reverse().join('');
 };
@@ -120,7 +127,6 @@ const decrypt = (encoded) => {
   }
 };
 
-// Load saved credentials on component mount
 onMounted(() => {
   try {
     const savedUsername = getCookie('rememberedUsername');
@@ -161,7 +167,7 @@ const handleSubmit = async () => {
     }
 
     // Call the backend API to save the login data
-    const response = await fetch('/api/login', {
+    const response = await fetch(config.public.apiLoginEndpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -175,6 +181,7 @@ const handleSubmit = async () => {
 
     const result = await response.json();
     if (result.success) {
+      loginSuccess.value = true;
       console.log('Login successful');
     } else {
       console.error('Login failed:', result.message);
@@ -183,5 +190,4 @@ const handleSubmit = async () => {
     console.error('Error during login:', error);
   }
 };
-
 </script>

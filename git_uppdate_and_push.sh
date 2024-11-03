@@ -1,4 +1,5 @@
 #!/bin/bash
+git status
 
 echo "Enter commit message: "
 read commit_message

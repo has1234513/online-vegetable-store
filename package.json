@@ -11,7 +11,10 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@nuxtjs/dotenv": "^1.4.2",
+    "jsonwebtoken": "^9.0.2",
     "nuxt": "^3.13.2",
+    "uuid": "^11.0.2",
     "vue": "latest",
     "vue-router": "latest"
   },
