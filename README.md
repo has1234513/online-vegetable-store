@@ -1,6 +1,6 @@
 ## Brief summary of decisions made
 1. Some design elements in the application may differ slightly from the Figma mockups due to adjustments for responsive behavior.
-2. The application is built with Nuxt, allowing for seamless integration of login authentication features.
+2. The application is built with Nuxt, to allow for seamless integration of login authentication features.
 3. If there is an error with the https://host.tagmarshal.golf/api/login endpoint, an error message is displayed; however, users can still access the homepage if the existing Nuxt authentication is successful.
 4. Pinia is used for efficient state management throughout the application.
 
