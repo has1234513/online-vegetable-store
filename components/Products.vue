@@ -1,15 +1,20 @@
 <template>
   <div class="px-4 py-6 max-w-[1440px] mx-auto">
     <!-- Title and Sorting Section -->
-    <div class="flex md:flex-row md: flex-col items-center justify-between mb-8">
-      <div class="flex flex-row items-center gap-2">
-        <h1 class="font-normal text-[64px] leading-[76.8px] font-newsreader">In Store</h1>
-        <span class="text-gray-600">
-          Fresh — {{ formatDate(new Date()) }}
+    <div
+      class="flex md:flex-row md: flex-col items-center justify-between mb-8"
+    >
+      <div class="flex flex-row items-baseline gap-2">
+        <h1 class="font-normal text-[64px] leading-[76.8px] font-newsreader">
+          In Store
+        </h1>
+        <span class="ml-6 text-[20px] font-light leading-[26px]">
+          <span class="font-semibold">Fresh</span> —
+          {{ formatDate(new Date()) }}
         </span>
       </div>
 
-      <div class="flex gap-2">
+      <div class="flex gap-2 mr-14">
         <button
           v-for="sort in ['Default', 'A-Z', 'Z-A']"
           :key="sort"
@@ -27,7 +32,9 @@
     </div>
 
     <!-- Products Grid - Fixed 3 columns -->
-    <div class="flex items-center space-y-10 md:space-y-0 flex-col md:grid xl:grid-cols-3 md:grid-cols-2 md:gap-6 mx-auto">
+    <div
+      class="flex items-center space-y-10 md:space-y-0 flex-col md:grid xl:grid-cols-3 md:grid-cols-2 md:gap-6 mx-auto"
+    >
       <div
         v-for="product in store.sortedProducts"
         :key="product.id"
@@ -46,27 +53,35 @@
         <div class="px-6 py-2">
           <div class="flex justify-between items-start mb-2">
             <div>
-                <h3 class="text-[20px] leading-[26px] font-semibold">{{ product.name }}</h3>
-                <p class="text-[20px] leading-[26px] font-semibold text-tgreen-100">${{ product.price }} /lb</p>
+              <h3 class="text-[20px] leading-[26px] font-semibold">
+                {{ product.name }}
+              </h3>
+              <p
+                class="text-[20px] leading-[26px] font-semibold text-tgreen-100"
+              >
+                ${{ product.price }} /lb
+              </p>
             </div>
-            
+
             <button
-                v-if="isInBasket(product.id)"
-                @click="store.removeFromBasket(product.id)"
-                class=" py-2 px-4 bg-red-600 text-white rounded-md hover:bg-red-300 transition-colors"
+              v-if="isInBasket(product.id)"
+              @click="store.removeFromBasket(product.id)"
+              class="py-2 px-4 bg-red-600 text-white rounded-md hover:bg-red-300 transition-colors"
             >
-                Remove
+              Remove
             </button>
             <button
-                v-else
-                @click="store.addToBasket(product.id)"
-                class="py-2 px-4 bg-tgreen-100 text-white rounded-md hover:bg-tgreen-50 transition-colors"
+              v-else
+              @click="store.addToBasket(product.id)"
+              class="py-2 px-4 bg-tgreen-100 text-white rounded-md hover:bg-tgreen-50 transition-colors"
             >
-                Add to Basket
+              Add to Basket
             </button>
           </div>
 
-          <p class="text-[16px] leading-[24px] text-tgrey-100 mb-4">{{ product.description }}</p>          
+          <p class="text-[16px] leading-[24px] text-tgrey-100 mb-4">
+            {{ product.description }}
+          </p>
         </div>
       </div>
     </div>

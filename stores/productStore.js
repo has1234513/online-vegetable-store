@@ -61,16 +61,16 @@ export const useProductStore = defineStore('products', {
 
       // Apply sorting based on the value of `sortBy`
       if (state.filters.sortBy === 'a-z') {
-        sorted = [...state.products]
+        sorted = [...state.products];
         const atoz = sorted.sort((a, b) => a.name.localeCompare(b.name));
 
-        return atoz
+        return atoz;
       }
 
       if (state.filters.sortBy === 'z-a') {
-        sorted = [...state.products]
+        sorted = [...state.products];
         const ztoa = sorted.sort((a, b) => b.name.localeCompare(a.name));
-        return ztoa
+        return ztoa;
       }
 
       // Return the unsorted array if no sorting filter is applied

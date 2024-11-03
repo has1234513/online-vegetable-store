@@ -48,7 +48,7 @@
             >
           </div>
 
-          <div class="text-red-400 text-[16px] font-semibold">
+          <div v-if="loginError" class="text-red-400 text-[20px] font-semibold">
             <span> Error logging in </span>
           </div>
 
@@ -56,21 +56,27 @@
             type="submit"
             class="w-[128px] ml-auto flex justify-center items-center py-3 px-4 border border-transparent rounded-md shadow-sm text-[16px] font-semibold text-tgreen-100 bg-twhite-100 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-tgreen-50"
           >
-            Login
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-4 w-4 ml-2"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M14 5l7 7m0 0l-7 7m7-7H3"
-              />
-            </svg>
+            <div
+              v-if="loading"
+              class="w-6 h-6 rounded-full animate-spin border-2 border-solid border-tgreen-100 border-t-transparent"
+            ></div>
+            <div v-else class="flex items-center">
+              Login
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4 ml-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
+            </div>
           </button>
         </form>
       </div>
@@ -90,6 +96,7 @@ const username = ref('');
 const password = ref('');
 const rememberMe = ref(false);
 const loginError = ref(false);
+const loading = ref(false);
 
 // Cookie utility functions
 const setCookie = (name, value, days) => {
@@ -160,6 +167,8 @@ const handleRememberMeChange = () => {
 
 const handleSubmit = async () => {
   try {
+    loginError.value = false;
+    loading.value = true;
     const response = await fetch(config.public.apiLoginEndpoint, {
       method: 'POST',
       headers: {
@@ -170,20 +179,23 @@ const handleSubmit = async () => {
         password: password.value,
         rememberMe: rememberMe.value,
       }),
-    });
+    });    
 
-    // const tagmarshallResponse = await fetch("https://host.tagmarshal.golf/api/login", {
+    // const tagmarshallResponse = await fetch(
+    //   'https://host.tagmarshal.golf/api/login',
+    //   {
     //     method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     username: username.value,
-    //     password: password.value
-    //   }),
-    // })
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //       username: username.value,
+    //       password: password.value,
+    //     }),
+    //   }
+    // );
 
-    // console.logg("tagmarshall", tagmarshallResponse)
+    // console.logg('tagmarshall', tagmarshallResponse);
 
     const result = await response.json();
     if (result.success) {
@@ -201,8 +213,11 @@ const handleSubmit = async () => {
     } else {
       console.error('Login failed:', result.message);
     }
+
+    loading.value = false;
   } catch (error) {
     loginError.value = true;
+    loading.value = false;
     console.error('Error during login:', error);
   }
 };
