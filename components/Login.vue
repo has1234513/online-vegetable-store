@@ -48,7 +48,7 @@
             >
           </div>
 
-          <div v-if="loginError !== ''" class="text-red-400 text-[16px] font-semibold">
+          <div v-if="loginError !== ''" class="text-red-300 text-[16px] font-semibold">
             <span> Error logging in on tagmarshall api, go to <NuxtLink
               to="/home"
               class="text-blue-300 "

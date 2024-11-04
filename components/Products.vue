@@ -67,7 +67,7 @@
             <button
               v-if="isInBasket(product.id)"
               @click="removeFromBasket(product.id)"
-              class="py-2 px-4 bg-red-600 text-white rounded-md hover:bg-red-300 transition-colors"
+              class="py-2 px-4 bg-tred-100 text-white rounded-md hover:bg-red-300 transition-colors"
             >
               Remove
             </button>

@@ -87,7 +87,7 @@
             </p>
             <button
               @click="cartStore.removeFromBasket(item.id)"
-              class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
+              class="px-4 py-2 bg-tred-100 text-white rounded-md hover:bg-red-300 transition-colors"
             >
               Remove
             </button>

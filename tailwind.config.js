@@ -20,6 +20,7 @@ export default {
         'tgrey-50': '#FAFAF5',
         'tgrey-60': '#E6E6E6',
         'tgrey-100': '#6D6D6D',
+        'tred-100': "#C60606"
       },
     },
   },

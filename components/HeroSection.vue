@@ -5,7 +5,7 @@
       <h1
         class="text-[56px] leading-normal font-normal font-newsreader md:text-[64px] mb-4 md:leading-[76.8px]"
       >
-        We're <em class="font-italic">farmers, purveyors,</em> and eaters of
+        We're <em class="font-italic">farmers, purveyors,</em> and <em class="font-italic">eaters</em> of
         <br />
         organically grown food.
       </h1>
