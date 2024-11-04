@@ -19,10 +19,10 @@
           v-for="sort in ['Default', 'A-Z', 'Z-A']"
           :key="sort"
           :class="[
-            'px-3 py-2 rounded-[20px] border-[2px] border-tgrey-60  text-[16px] font-semibold leading-[20.8px];',
+            'px-3 py-2 rounded-[20px] border-[2px] border-tgrey-60 ho text-[16px] font-semibold leading-[20.8px];',
             store.filters.sortBy.toLowerCase() === sort.toLowerCase()
-              ? 'bg-tgreen-100 text-twhite-100'
-              : 'bg-tgrey-50',
+              ? 'bg-tgreen-100 text-twhite-100 hover:bg-tgreen-50'
+              : 'bg-tgrey-50 hover:bg-tgrey-60',
           ]"
           @click="store.setSortBy(sort.toLowerCase())"
         >
@@ -39,10 +39,10 @@
       <div
         v-for="product in store.sortedProducts"
         :key="product.id"
-        class="bg-tgrey-50 border-[2px] border-tgrey-60 rounded-lg max-w-[500px]"
+        class="bg-tgrey-50 border-[2px] border-tgrey-60 rounded-[24px] max-w-[500px]"
       >
         <!-- Product Image -->
-        <div class="mb-4 overflow-hidden bg-twhite-100">
+        <div class="mb-4 overflow-hidden rounded-t-[24px] bg-twhite-100">
           <img
             :src="product.image"
             :alt="product.name"
