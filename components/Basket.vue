@@ -21,17 +21,17 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
       <!-- Cart Items Section -->
-      <div class="lg:col-span-2 space-y-4">
+      <div class="lg:col-span-2 col-span-1 w-[] space-y-4">
         <div
           v-for="item in cartItems"
           :key="item.id"
-          class="bg-tgrey-50 border-[2px] border-tgrey-60 rounded-[24px] flex items-center gap-4"
+          class="bg-tgrey-50 border-[2px] border-tgrey-60 rounded-[24px] flex md:flex-row flex-col justify-center items-center md:gap-4"
         >
           <!-- Product Image -->
           <img
             :src="item.product.image"
             :alt="item.product.name"
-            class="h-[160px] object-cover rounded-l-[24px]"
+            class="md:h-[160px] md:w-auto h-auto w-full md object-cover md:rounded-l-[24px] rounded-l-[0px]"
           />
 
           <!-- Product Details -->
